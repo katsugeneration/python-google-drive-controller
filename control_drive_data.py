@@ -30,7 +30,7 @@ with open("credentials.pkl", 'wb') as f:
 service = build('drive', 'v3', credentials=credentials)
 
 if args.mode == 'upload':
-    media = MediaFileUpload(args.file_name)
+    media = MediaFileUpload(args.file_name, resumable=True)
     file = service.files().create(body={'name': args.output_file}, media_body=media, fields='id').execute()
 if args.mode == 'download':
     # Search files from file name
