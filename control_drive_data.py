@@ -46,7 +46,7 @@ if args.mode == 'download':
             request = service.files().export_media(fileId=f['id'], mimeType='application/pdf')
         else:
             # Get Other format file to original file
-            request = service.files().get(fileId=f['id'])
+            request = service.files().get_media(fileId=f['id'])
         buffer = open(args.output_file, 'wb')
         downloader = MediaIoBaseDownload(buffer, request)
         done = False
